@@ -20,11 +20,11 @@ Builds the app for production to the `build` folder.\
 
 ## File Structure
 .
-├── public                  # Static files
-├── src
-│   ├── assets              # Images
-│   ├── components          # React components
-│   └── hooks               # Custom hooks
-│   ├── store               # Redux files
-│   └── tests               # Unit tests  
-└── README.md
+├── public                  # Static files      \
+├── src                                         \
+│   ├── assets              # Images            \
+│   ├── components          # React components  \
+│   └── hooks               # Custom hooks      \
+│   ├── store               # Redux files       \
+│   └── tests               # Unit tests        \
+└── README.md                                   \
