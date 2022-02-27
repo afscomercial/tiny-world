@@ -22,9 +22,9 @@ Builds the app for production to the `build` folder.
 .                                          
 ├--public         # Static files\
 ├--src            # source files\
-|--├--assets      # Images\
-|--├--components  # React components\
-|--├--hooks       # Custom hooks\
-|--├--store       # Redux files\
-|--├--tests       # Unit tests\
+|---├--assets      # Images\
+|---├--components  # React components\
+|---├--hooks       # Custom hooks\
+|---├--store       # Redux files\
+|---├--tests       # Unit tests\
 ├--README.md              
