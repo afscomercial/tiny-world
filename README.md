@@ -13,18 +13,18 @@ Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 ### `npm test`
-Launches the test runner in the interactive watch mode.\
+Launches the test runner in the interactive watch mode.
 ### `npm run build`
-Builds the app for production to the `build` folder.\
+Builds the app for production to the `build` folder.
 
 
 ## File Structure
-.
-├── public                  # Static files      \
-├── src                                         \
-│   ├── assets              # Images            \
-│   ├── components          # React components  \
-│   └── hooks               # Custom hooks      \
-│   ├── store               # Redux files       \
-│   └── tests               # Unit tests        \
-└── README.md                                   \
+.\                                            
+├── public                  # Static files\
+├── src\
+│   ├── assets              # Images\
+│   ├── components          # React components\
+│   └── hooks               # Custom hooks\
+│   ├── store               # Redux files\
+│   └── tests               # Unit tests\
+└── README.md              
