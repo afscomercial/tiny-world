@@ -1,0 +1,19 @@
+.header {
+  display: flex;
+  margin: 2%;
+  justify-content: center;
+  align-items: space-around;
+}
+
+div.header > * {
+  margin: 0px 20px 0px 20px;
+}
+
+.header-form,
+.header-data {
+  padding: 15px;
+  background-color: #a2b9bc;
+  border-radius: 10px;
+  border: 2px solid white;
+  width: 25%;
+}

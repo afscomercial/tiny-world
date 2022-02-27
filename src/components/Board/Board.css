@@ -1,0 +1,33 @@
+.board {
+  margin: 2%;
+  width: 100%;
+}
+
+.board-content {
+  width: 50%;
+  height: 100%;
+  margin: 0 auto;
+  background-color: #b2ad7f;
+  padding: 10px;
+  border-radius: 10px;
+  border: 2px solid black;
+  display: grid;
+  justify-content: center;
+}
+
+.board-cell {
+  width: 100px;
+  height: 100px;
+  background-repeat: no-repeat;
+  border: 1px solid black;
+  box-shadow: 2px 2px 2px gray;
+  background-size: contain;
+  transition: all 0.1s ease-in-out;
+}
+
+
+
+div.board-cell:hover {
+  border-top: 1px solid black;
+  transform: scale(1.1);
+}
