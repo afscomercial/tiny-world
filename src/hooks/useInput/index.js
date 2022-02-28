@@ -1,5 +1,7 @@
 import { useState } from 'react';
 
+import {max, min} from '../../utils';
+
 const numberValue = (value) => Math.abs(parseInt(value.trim()));
 
 const validRange = (value) => {
@@ -7,7 +9,7 @@ const validRange = (value) => {
   if (isNaN(valueParsed)) {
     return false;
   } else {
-    if (valueParsed > 0 && valueParsed < 21) {
+    if (valueParsed >= min && valueParsed <= max) {
       return true;
     } else {
       return false;

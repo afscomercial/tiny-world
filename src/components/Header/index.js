@@ -1,6 +1,10 @@
+import { useSelector, useDispatch } from 'react-redux';
+
+import { setBoard } from '../../store/actions';
 import useInput from './../../hooks/useInput';
 import './Header.css';
 import earthImg from '../../assets/img/earth.svg';
+import {max, min} from '../../utils';
 
 const Header = () => {
   const {
@@ -9,6 +13,7 @@ const Header = () => {
     hasError: cellsHeightHasError,
     valueChangeHandlerNumbers: cellsHeightChangedHandler,
     inputFocusHandler: cellsHeightFocusHandler,
+    reset: cellsHeightReset,
   } = useInput();
 
   const {
@@ -17,7 +22,23 @@ const Header = () => {
     hasError: cellsWidthHasError,
     valueChangeHandlerNumbers: cellsWidthChangedHandler,
     inputFocusHandler: cellsWidthFocusHandler,
+    reset: cellsWidthReset,
   } = useInput();
+
+  const dispatch = useDispatch();
+
+  let formIsValid = false;
+
+  if (cellsHeightIsValid && cellsWidthIsValid) {
+    formIsValid = true;
+  }
+
+  const formSubmissionHandler = (event) => {
+    event.preventDefault();
+    dispatch( setBoard( cellsWidth, cellsHeight ) );
+    cellsHeightReset();
+    cellsWidthReset();
+  };
 
   const cellsWidthClasses = cellsWidthHasError
     ? 'form-control is-invalid'
@@ -35,13 +56,13 @@ const Header = () => {
       </div>
       <div className='header-form'>
         <p>Enter Board Dimensions</p>
-        <form>
+        <form onSubmit={formSubmissionHandler}>
           <div className='form-group form-group-sm row'>
             <label
               htmlFor='cellsWidthInput'
               className='col-sm-7 col-form-label'
             >
-              vertical cells: <strong>{'(Min 1 Max 5)'}</strong>
+              vertical cells: <strong>{`(Min ${min} Max ${max})`}</strong>
             </label>
             <div className='col-sm-5'>
               <input
@@ -61,7 +82,7 @@ const Header = () => {
               htmlFor='cellsWidthInput'
               className='col-sm-7 col-form-label'
             >
-              horizontal cells: <strong>{'(Min 1 Max 5)'}</strong>
+              horizontal cells: <strong>{`(Min ${min} Max ${max})`}</strong>
             </label>
             <div className='col-sm-5'>
               <input
@@ -76,6 +97,7 @@ const Header = () => {
               <div className='invalid-feedback'>Enter a valid number</div>
             </div>
           </div>
+          <button type="submit" className="btn btn-light" disabled={!formIsValid}>Set Board</button>
         </form>
       </div>
 
