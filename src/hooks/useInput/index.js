@@ -22,7 +22,7 @@ const useInput = () => {
   const [isTouched, setIsTouched] = useState(false);
 
   const valueIsValid = validRange(enteredValue);
-  const hasError = !valueIsValid && isTouched;
+  const hasError = !valueIsValid && isTouched && enteredValue;
 
   const valueChangeHandlerNumbers = (event) => {
     const valueParsed = numberValue(event.target.value);

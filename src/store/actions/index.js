@@ -8,3 +8,18 @@ export const setBoard = (width, height) => ({
         height
     }
 });
+
+export const reBuildBoard = (width, height) => ({
+    type: types.reBuildBoard,
+    payload: {
+        width,
+        height
+    }
+});
+
+export const changeCell = (id) => ({
+    type: types.changeCell,
+    payload: {
+        id,
+    }
+});

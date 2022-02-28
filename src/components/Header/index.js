@@ -1,10 +1,10 @@
 import { useSelector, useDispatch } from 'react-redux';
 
-import { setBoard } from '../../store/actions';
+import { setBoard, reBuildBoard } from '../../store/actions';
 import useInput from './../../hooks/useInput';
 import './Header.css';
 import earthImg from '../../assets/img/earth.svg';
-import {max, min} from '../../utils';
+import { max, min } from '../../utils';
 
 const Header = () => {
   const {
@@ -24,7 +24,8 @@ const Header = () => {
     inputFocusHandler: cellsWidthFocusHandler,
     reset: cellsWidthReset,
   } = useInput();
-
+  const filledCells = useSelector((state) => state.filledCells);
+  const islands = useSelector((state) => state.islands);
   const dispatch = useDispatch();
 
   let formIsValid = false;
@@ -35,7 +36,9 @@ const Header = () => {
 
   const formSubmissionHandler = (event) => {
     event.preventDefault();
-    dispatch( setBoard( cellsWidth, cellsHeight ) );
+    filledCells > 0
+      ? dispatch(reBuildBoard(cellsWidth, cellsHeight))
+      : dispatch(setBoard(cellsWidth, cellsHeight));
     cellsHeightReset();
     cellsWidthReset();
   };
@@ -62,7 +65,7 @@ const Header = () => {
               htmlFor='cellsWidthInput'
               className='col-sm-7 col-form-label'
             >
-              vertical cells: <strong>{`(Min ${min} Max ${max})`}</strong>
+              number of columns: <strong>{`(Min ${min} Max ${max})`}</strong>
             </label>
             <div className='col-sm-5'>
               <input
@@ -82,7 +85,7 @@ const Header = () => {
               htmlFor='cellsWidthInput'
               className='col-sm-7 col-form-label'
             >
-              horizontal cells: <strong>{`(Min ${min} Max ${max})`}</strong>
+              number of rows: <strong>{`(Min ${min} Max ${max})`}</strong>
             </label>
             <div className='col-sm-5'>
               <input
@@ -97,14 +100,24 @@ const Header = () => {
               <div className='invalid-feedback'>Enter a valid number</div>
             </div>
           </div>
-          <button type="submit" className="btn btn-light" disabled={!formIsValid}>Set Board</button>
+          <button
+            type='submit'
+            className='btn btn-light'
+            disabled={!formIsValid}
+          >
+            Set Board
+          </button>
         </form>
       </div>
 
       <div className='header-data'>
         <p>Board State</p>
-        <p>Filled Cells:<strong> 4</strong></p>
-        <p>Amount of Islands:<strong> 2</strong></p>
+        <p>
+          Filled Cells: <strong>{filledCells}</strong>
+        </p>
+        <p>
+          Amount of Islands: <strong>{islands}</strong>
+        </p>
       </div>
     </div>
   );

@@ -4,46 +4,25 @@ import './Board.css';
 import waterImg from '../../assets/img/wave.svg';
 import soilImg from '../../assets/img/soil.svg';
 import { max, min } from '../../utils';
+import { changeCell } from '../../store/actions';
 
-const cells = [
-  { id: 1, state: false },
-  { id: 2, state: true },
-  { id: 3, state: false },
-  { id: 4, state: false },
-  { id: 5, state: false },
-  { id: 6, state: false },
-  { id: 7, state: false },
-  { id: 8, state: false },
-  { id: 9, state: false },
-  { id: 10, state: false },
-  { id: 11, state: false },
-  { id: 12, state: false },
-  { id: 13, state: false },
-  { id: 14, state: false },
-  { id: 15, state: false },
-  { id: 16, state: false },
-  { id: 17, state: false },
-  { id: 18, state: false },
-  { id: 19, state: false },
-  { id: 20, state: false },
-  { id: 21, state: false },
-  { id: 22, state: false },
-  { id: 23, state: false },
-  { id: 24, state: false },
-  { id: 25, state: false },
-];
 
 const Board = () => {
   const width = useSelector((state) => state.width);
+  const board = useSelector((state) => state.board);
+  const dispatch = useDispatch();
   const validWidth = width >= min && width <= max;
   const inlineBoardStyle = { gridTemplateColumns: `repeat(${width}, 100px)` };
 
+  const clickHandler = (id) => {
+    dispatch( changeCell( id ) );
+  };
 
   return (
     <div className='board'>
       {validWidth ? (
         <div className='board-content' style={inlineBoardStyle}>
-          {cells.map((cell) => (
+          {board.map((cell) => (
             <div
               className='board-cell'
               style={{
@@ -51,6 +30,7 @@ const Board = () => {
                 backgroundColor: `${!cell.state ? '#80ced6' : '#b9936c'}`,
               }}
               key={cell.id}
+              onClick={()=>clickHandler(cell.id)}
             ></div>
           ))}
         </div>
