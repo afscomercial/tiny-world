@@ -29,7 +29,3 @@ Builds the app for production to the `build` folder.
 |---├--tests        # Unit tests\
 |---|--utils        # Utils folder\
 ├--README.md              
-
-
-### Note
-Was missing more unit tests, I was a little short of time.
